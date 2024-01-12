@@ -1,0 +1,32 @@
+health = 100
+
+def DoDamage(DamageAmount, Alert):
+    global health
+    health -= DamageAmount
+    if Alert == True:
+        print(f"You lost {DamageAmount}, You have {health} health!")
+
+def AddHealth(AddAmount, Alert):
+    global health
+    health += 1
+    if Alert == True:
+        print(f"You gained {AddAmount} health, you're at {health}!")
+
+def ResetHealth():
+    global health
+    health = 100
+
+def EnemyEncounter(EnemyName, EnemyIsAggressive, EnemyStrong, EnemyHealth):
+    global health
+    print(f"You encountered a {EnemyName}!")
+    while EnemyHealth > 0:
+        PlayerWantsAttack = input("Would you like to attack? (y/n) ")
+        if PlayerWantsAttack.lower() == "y":
+            EnemyHealth -= 3
+            print(f"{EnemyName} is now at {EnemyHealth} health")
+            if EnemyHealth <= 0:
+                print(f"You killed {EnemyName}")
+                break
+        if EnemyIsAggressive == True:
+            health -= EnemyStrong
+            print(f"You lost {EnemyStrong} health! You're at {health}")		
